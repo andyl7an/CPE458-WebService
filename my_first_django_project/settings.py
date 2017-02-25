@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+    'newLoc',
+    'updateLoc',
 ]
 
 MIDDLEWARE = [
@@ -80,19 +82,20 @@ if os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine'):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '/cloudsql/composed-setup-158400:index-instance',
-            'NAME': 'index_database',
+            'HOST': '/cloudsql/composed-setup-158400:us-central1:index-instance4',
+            'NAME': 'jojodb',
             'USER': 'root',
+            #'PASSWORD': 'pass',
         }
     }
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'index_database',
-            'USER': 'Andy',
+            'NAME': 'jojodb',
+            'USER': 'root',
             'PASSWORD': 'pass',
-            'HOST': '173.194.252.249',
+            'HOST': '127.0.0.1',
             'PORT': '3306',
         }
     }

@@ -19,5 +19,7 @@ from django.contrib import admin
 from django.conf.urls import include, url
 
 urlpatterns = [
-    url(r'', include('index.urls')),
+    url(r'', include('index.urls'), name = 'index'),
+    url(r'^add$', include('newLoc.urls'), name='post_new'),
+    url(r'^update$', include('updateLoc.urls'), name='update'),
 ]

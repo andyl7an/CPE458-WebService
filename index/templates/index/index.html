@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<head>
+
+      <meta charset="utf-8">
+     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <title>Starbucks Locations</title>
+    <style>
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.page-header {
+    background-color: #0b421a;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+.content {
+    margin-left: 40px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h1 a, .post h1 a:visited {
+    color: #000000;
+}
+
+tr:hover{background-color:#f5f5f5}
+</style>
+
+
+</head>
+<body>
+    <div class="page-header">
+            <a href="/add" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <h1 class="text-center">Starbucks Locations</h1>
+        </div>
+    <div class = "container">
+        <table class = "table table-hover table-striped table-bordered table-condensed" >
+            <thead>
+                 <tr>
+                     <th>UPDATE</th>
+                    <th>DELETE</th>
+                    <th>Store Name</th>
+                    <th>Ownership</th>
+                    <th>Street Address</th>
+                    <th>City</th>
+                    <th>State/Province</th>
+                    <th>Postcode</th>
+                    <th>Country</th>
+                    <th>Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+             {% for row in query_results %}
+                <tr>
+                    <td>
+                        <form action="https://composed-setup-158400.appspot.com/update">
+                            <input type="hidden" name="number" value="{{row.Store_Number}}" />
+                            <input type="submit" value="Update" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input type="submit" name="store_number" value="{{row.Store_Number}}" />
+                        </form>
+                    </td>
+                    <td>{{ row.Store_Name }}</td>
+                    <td>{{ row.Ownership_Type}}</td>
+                    <td>{{ row.Street_Address}}</td>
+                    <td>{{ row.City}}</td>
+                    <td>{{ row.StateProvince}}</td>
+                    <td>{{ row.Postcode}}</td>
+                    <td>{{ row.Country}}</td>
+                    <td>{{ row.Phone_Number}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+
+
+</table>
+</body>
+</html>

@@ -30,7 +30,6 @@ from .library import Library
 
 register = Library()
 
-
 #######################
 # STRING DECORATOR    #
 #######################
